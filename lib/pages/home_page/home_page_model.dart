@@ -17,9 +17,9 @@ class HomePageModel extends FlutterFlowModel {
   // Stores action output result for [Custom Action - deviceInfoPlugin] action in homePage widget.
   String? testAgent;
   // Stores action output result for [Custom Action - deviceInfoIOS] action in homePage widget.
-  String? hasilIos;
-  // Stores action output result for [Custom Action - deviceInfoAndroid] action in homePage widget.
-  String? hasilandroid;
+  String? infoIos;
+  // Stores action output result for [Custom Action - androidjson] action in homePage widget.
+  dynamic? hasilJson;
 
   /// Initialization and disposal methods.
 

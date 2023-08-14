@@ -28,8 +28,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.testAgent = await actions.deviceInfoPlugin();
-      _model.hasilIos = await actions.deviceInfoIOS();
-      _model.hasilandroid = await actions.deviceInfoAndroid();
+      _model.infoIos = await actions.deviceInfoIOS();
+      _model.hasilJson = await actions.androidjson();
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -81,22 +81,67 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Text(
-                      _model.hasilIos!,
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                    child: Text(
                       'android',
                       style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
                   ),
+                  if (getJsonField(
+                        _model.hasilJson,
+                        r'''$.brand''',
+                      ) !=
+                      null)
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                      child: Text(
+                        getJsonField(
+                          _model.hasilJson,
+                          r'''$.brand''',
+                        ).toString(),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ),
+                  if (getJsonField(
+                        _model.hasilJson,
+                        r'''$.model''',
+                      ) !=
+                      null)
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                      child: Text(
+                        getJsonField(
+                          _model.hasilJson,
+                          r'''$.model''',
+                        ).toString(),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ),
+                  if (getJsonField(
+                        _model.hasilJson,
+                        r'''$.device''',
+                      ) !=
+                      null)
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                      child: Text(
+                        getJsonField(
+                          _model.hasilJson,
+                          r'''$.device''',
+                        ).toString(),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ),
                   Text(
-                    _model.hasilandroid!,
+                    'ios',
                     style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
+                  if (_model.infoIos != null && _model.infoIos != '')
+                    Text(
+                      _model.infoIos!,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
                 ],
               ),
             ),
